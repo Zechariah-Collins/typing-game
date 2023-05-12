@@ -19,8 +19,19 @@ async function getWords() {
 }
 
 function startGame() {
+  //reset lives back to 3 when game starts
+  lives = 3;
+  score = 0;
+  currentIndex = 0;
+  document.getElementById('lives').textContent = `${lives}`
+  const elementsToHide = document.querySelectorAll('.end-game-disable');
+  document.getElementById('game-over').textContent = ''
+  document.getElementById('score').textContent = `${score}`
+  for (element of elementsToHide){
+    element.style.display = 'block';
+  }
   document.getElementById('start').style.display = 'none';
-  setTimeout(endGame, 60000, 1000);
+  timeOutId = setTimeout(endGame, 60000, 1000);
   getWords();
 }
 
@@ -53,19 +64,15 @@ function completeWord() {
 
 
 function endGame() {
-    const elements = document.querySelectorAll("[id]");
-    for (let element of elements){
-        if (element.getAttribute('id') === 'game-over'){
-          element.textContent = "Hi, test";
-          element.style.color = 'red';
-          element.style.fontSize = "50px";
-          console.log(element);
-        }
-        else{
-          element.innerHTML = '';
-        }
-        
-    }
-        document.body.style.backgroundColor = '#000000';
-    }
+  clearTimeout(timeOutId);
+  const elementsToHide = document.querySelectorAll('.end-game-disable');
+  for (element of elementsToHide){
+    element.style.display = 'none';
+  }
+  document.getElementById('game-over').textContent = `Congrats! You scored ${score}`;
+  const button = document.createElement('button');
+  button.textContent = 'Play Again';
+  button.addEventListener('click', startGame);
+  document.getElementById('game-over').appendChild(button);
+  }
 

@@ -9,23 +9,23 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="fun">Welcome to TypeHype!</h1>
+        <h1 id="fun" class="end-game-disable">Welcome to TypeHype!</h1>
         <h1 id ="game-over"></h1>
         <div id="current-word-container">
-            <p id="current-word"></p>
+            <p class="end-game-disable" id="current-word"></p>
         </div>
         <div id="start" class="button-container">
             <button onclick="startGame()">Start Game</button>
         </div>
         <div id="game" class="hidden">
             <div class="score-container">
-                <h2>Score: <span id="score">0</span></h2>
-                <h2>Lives: <span id="lives">3</span></h2>
+                <h2 class="end-game-disable">Score: <span id="score">0</span> </h2>
+                <h2 class="end-game-disable">Lives: <span id="lives">3</span></h2>
             </div>
             <div class="input-container">
-                <label for="input-box">Enter Word:</label>
-                <input type="text" id="input-box">
-                <button id= "submit-button" onclick="checkWord()">Submit</button>
+                <label for="input-box" class="end-game-disable">Enter Word:</label>
+                <input type="text" id="input-box" class="end-game-disable">
+                <button id= "submit-button" class="end-game-disable" onclick="checkWord()">Submit</button>
             </div>
         </div>
     </div>
